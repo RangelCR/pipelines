@@ -1,0 +1,618 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+     
+}
+
+
+header{
+    height: 70vh;
+    background-image: url(../imagens/banner.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+     
+}
+
+.info-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    color: white;
+    padding-top: 1vh;
+     
+     
+}
+
+.name-foto{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.name-foto img{
+    width: 100px;
+    border-radius: 30%;
+}
+
+.links-header{
+    width: 10vw;
+    display: flex;
+    justify-content: space-around;
+     
+}
+
+.links-header img{
+    border-radius: 30%;
+}
+
+ 
+.banner{
+    width: 800px;
+    color: white;
+    margin: auto;
+    text-align: center;
+    font-size: 21px;
+    flex: 2;
+    display: flex;
+    align-items: center;
+     
+}
+
+h1::after{
+    content: '|';
+    margin-left: 5px;
+    opacity: 1;
+    animation: piscar 1s infinite
+}
+@keyframes piscar{
+    0%, 100%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+}
+
+.about{
+    display: flex;
+    background:  linear-gradient(90deg, #999, #ccc, #fff );
+    height: 60vh;
+}
+.sobre{
+    flex: 1;
+     
+}
+.sobre-texto{
+    margin: auto;
+    width: 80%;
+    text-align: justify;
+    font-size: 20px;
+     
+}
+
+.sobre h2{
+    text-align: center;
+     
+}
+.skills{
+    flex: 1;
+    
+}
+
+.skills h2, h4{
+    text-align: center;
+}
+
+.skills-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 60%;
+    width: 80%;
+    margin: auto;
+}
+
+.tech{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 25px;
+}
+
+ 
+ 
+
+.area-projetos{ 
+    color: white;
+    height: 700px;
+    display: flex;
+    transition: 0.5s;
+    overflow: hidden;
+    
+     
+}
+
+.controles{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     
+}
+
+.botao{
+    width: 50px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.botao img{
+    width: 50px;
+    height: 50px;
+    
+}
+.projeto-aeupp{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: 0.5s;
+    min-width: 100%;
+    background: linear-gradient(45deg,#E6E6E6,#36ade0, #0200b9,#0200b9);
+    background-size: 150% 150%;
+    animation: cores 5s ease infinite;
+}
+
+.projeto-pantera{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-around;
+    transition: 0.5s;
+    background: linear-gradient(45deg, DARKGREY,GRAY, BLACk, BLACK);
+    min-width: 100%;
+    background-size: 150% 150%;
+    animation: cores 5s ease infinite;
+}
+
+
+.projeto-smartstore{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: 0.5s;
+    background: linear-gradient(45deg, #F7FD04,  #F98404, orangered);
+    min-width: 100%;
+    background-size: 150% 150%;
+    animation: cores 5s ease infinite;
+    
+}
+
+
+@keyframes cores{
+    0%{
+        background-position: 0% 50%;
+    }
+
+    50%{
+        background-position: 100% 50%;
+    }
+
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1500px;
+    
+}
+ 
+.front,
+.back{
+    border-radius: 15px; 
+    width: 300px;
+    height: 300px;
+    box-shadow: 0px 0px 30px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    position: absolute;
+    transition: 800ms; 
+    backface-visibility: hidden;
+}
+
+.back{
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    z-index: 1;
+}
+
+.card:hover .front{
+    transform: rotateY(-180deg);
+    z-index: 0;
+}
+
+.card:hover .back{
+    transform: rotateY(0);
+    z-index: 1;
+}
+
+
+.back-AEUPP,
+.back-PANTERA,
+.back-SMARTSTORE{
+    color: white;
+    width: 80%;
+    height: 20%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+
+
+.back-AEUPP{
+    background-color: #0200b9;
+}
+
+.back-AEUPP:hover{
+    background-color: #36ade0;
+    transition: .4s;
+}
+
+.back-PANTERA{
+    background-color: black;
+}
+
+.back-PANTERA:hover{
+    background-color: gray;
+    transition: .4s;
+}
+
+.back-SMARTSTORE{
+    background-color: orangered;
+}
+
+.back-SMARTSTORE:hover{
+    background-color: #F98404;
+    transition: .4s;
+}
+
+
+.name-logo{
+    background-color: orangered;
+    width: 80%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+
+
+
+.info-projeto{
+     text-align: justify;
+     font-size: 20px;
+     width: 800px;
+      
+    
+}
+
+.card{
+    padding: 150px;
+}
+
+footer{
+    background-image: url(../imagens/banner.jpg);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 150px;
+    
+}
+
+footer p{
+    margin-top: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 21px;
+
+}
+
+.links-contato{
+    width: 250px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+@media(max-width: 1440px){
+    
+    .name-foto{
+        width: 35%;
+    }
+    
+    .banner{
+        width: 60%;
+        font-size: 20px;
+    }
+
+    .sobre-texto{
+        font-size: 16px;
+    }
+
+    .tech img{
+        width: 80px;
+    }
+
+    .front,
+    .back{
+        width: 300px;
+        height: 300px;
+    }
+
+    .info-projeto{
+        font-size: 20px;
+    }
+}
+
+
+@media(max-width: 1080px){
+    .name-foto{
+        width: 30%;
+    }
+
+    .name-foto img{
+        width: 80px;
+    }
+
+    .links-header{
+        width: 15%;
+    }
+
+    .links-header img{
+        width: 40px;
+    }
+
+    .banner{
+        width: 80%;
+        font-size: 19px;
+    }
+
+    .tech img{
+        width: 80px;
+    }
+
+    .about{
+       height:65%;
+    }
+    .sobre-texto{
+        font-size: 18px;
+    }
+}
+
+
+@media(max-width: 920px ){
+    .name-foto{
+        width: 40%;
+    }
+
+    .name-foto img{
+        width: 80px;
+    }
+
+    .links-header{
+        width: 20%;
+    }
+
+    .links-header img{
+        width: 40px;
+    }
+
+    .banner{
+        width: 80%;
+        font-size: 15px;
+    }
+
+    .about{
+        flex-direction: column;
+        min-height: 65vh;
+        
+    }
+
+    .sobre-texto{
+        font-size: 18px;
+         
+    }
+
+    .tech  img{
+        width: 70px;
+    }
+
+}
+
+@media(max-width: 768px){
+    .about{
+        height: 80%;
+    }
+    
+    .sobre-texto{
+        font-size: 16px;
+    }
+
+    .about{
+        min-height: 70vh;
+    }
+
+    .info-projeto{
+        font-size: 18px;
+        width: 600px;
+    }
+
+}
+
+@media(max-width: 700px){
+    .links-header{
+        display: none;
+    }
+
+    .name-foto{
+        width: 100%;
+        margin: auto;
+        font-size: 12px;
+    }
+
+    .name-foto img{
+        width: 70px;
+    }
+
+    .banner{
+        width: 80%;
+        font-size: 10px;
+    } 
+    .about{
+        min-height: 90vh ;
+    }
+
+    .sobre-texto{
+        font-size: 14px;
+    }
+    .tech img{
+        width: 50px;
+    }
+
+    .info-projeto{
+        font-size: 16px;
+        width: 500px;
+    }
+
+    footer p{
+        display: none;
+    }
+
+}
+
+@media(max-width: 480px){
+    .links-header{
+        display: none;
+    }
+
+    .name-foto{
+        width: 100%;
+        margin: auto;
+        font-size: 12px;
+    }
+
+    .name-foto img{
+        width: 70px;
+    }
+
+    .banner{
+        width: 80%;
+        font-size: 8px;
+    }
+
+    .sobre-texto{
+        font-size: 12px;
+    }
+    .skills h2{
+        font-size: 15px;
+    }
+
+    .skills h4{
+        font-size: 12px;
+    }
+
+    .tech img{ 
+        width: 40px;
+    }
+
+    .about{
+        min-height: 80vh ;
+    }
+
+    .info-projeto{
+        font-size: 15px;
+        width: 300px;
+         
+    }
+
+    .front,
+    .back{
+        width: 250px;
+        height: 250px;
+    }
+
+
+}
+ 
+@media(max-width: 320px){
+    
+    .sobre-texto{
+        font-size: 10px;
+    }
+
+    .tech img{ 
+        width: 30px;
+    }
+    .about{
+        min-height: 95vh ;
+    }
+
+    .controles{
+        display: none;
+    }
+    .area-projetos{
+        height: 100%;
+        flex-direction: column;
+    }
+    
+    .info-projeto{
+        font-size: 10px;
+        width: 250px;
+        color: white;
+    }
+
+    .front,
+    .back{
+        width: 150px;
+        height: 150px;
+    }
+
+    .back-AEUPP,
+    .back-PANTERA,
+    .back-SMARTSTORE,
+    .name-logo{
+        font-size: 15px;
+    }
+
+}
