@@ -3,7 +3,7 @@ name: Deploy para EC2
 on:
   push:
     branches:
-      - main  # ou o nome da branch principal do seu projeto
+      - main  # ou outra branch principal
 
 jobs:
   deploy:
@@ -13,7 +13,12 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Conectar na EC2 e fazer o deploy
+      - name: Compactar e codificar repositório
+        run: |
+          zip -r repo.zip ./*
+          base64 repo.zip > repo.b64
+
+      - name: Copiar e rodar na EC2
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -22,15 +27,37 @@ jobs:
           script: |
             cd ~/meu-site
 
+            # Limpa arquivos antigos
+            rm -rf *
+
+      - name: Enviar arquivos via SCP
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "repo.b64"
+          target: "~/meu-site"
+
+      - name: Rodar build e deploy via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/meu-site
+
+            # Decode e descompacta
+            base64 -d repo.b64 > repo.zip
+            unzip repo.zip
+            rm repo.b64 repo.zip
+
             # Remove container antigo se existir
             docker rm -f site || true
 
-            # Copia os arquivos do repositório
-            rm -rf *
-            echo "${{ secrets.REPO_ZIP }}" | base64 -d > repo.zip
-            unzip repo.zip
-            rm repo.zip
-
-            # Builda a imagem e sobe o container
+            # Builda a nova imagem
             docker build -t site .
+
+            # Sobe o novo container
             docker run -d --name site -p 80:80 site
