@@ -1,0 +1,36 @@
+name: Deploy para EC2
+
+on:
+  push:
+    branches:
+      - main  # ou o nome da branch principal do seu projeto
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Conectar na EC2 e fazer o deploy
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/meu-site
+
+            # Remove container antigo se existir
+            docker rm -f site || true
+
+            # Copia os arquivos do repositório
+            rm -rf *
+            echo "${{ secrets.REPO_ZIP }}" | base64 -d > repo.zip
+            unzip repo.zip
+            rm repo.zip
+
+            # Builda a imagem e sobe o container
+            docker build -t site .
+            docker run -d --name site -p 80:80 site
