@@ -1,0 +1,16 @@
+name: first-pipe
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+jobs:
+  firs-job:
+    name: "First-job"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "First Action"
+        run: echo "Primeira ação sendo executada às" $(date)
+      - name: "Second Action"
+        run: echo "Criado o primeiro workflow"
+    
+   
