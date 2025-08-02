@@ -16,5 +16,10 @@ jobs:
     name: "Second-job"
     runs-on: ubuntu-latest
     steps:
+      - name: "Definindo versão 22.18.0 para NodeJS"
+      - uses: actions/setup-node@v4
+        with:
+           node-version: '22.18.0'
       - name: "Validando versão NodeJS"
         run: node --version
+
