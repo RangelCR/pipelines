@@ -12,5 +12,9 @@ jobs:
         run: echo "Primeira ação sendo executada às" $(date)
       - name: "Second Action"
         run: echo "Criado o primeiro workflow"
-    
-   
+  second-job:
+    name: "Second-job"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Validando versão NodeJS"
+        run: node --version
