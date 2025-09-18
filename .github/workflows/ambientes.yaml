@@ -1,1 +1,17 @@
+#Workflow criado para prática de gerenciamento de multiplos ambientes, simulando deploy a partir de environments definidos no github actions.
 
+name: Deploy-App
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: HML
+    steps: 
+      - name: "First Action"
+        run: echo "Deploy sendo executado às" $(date)
+      - name: "Second Action"
+        run: echo "Deploy realizado no ambiente de ${{ vars.AMBIENTE }}"
