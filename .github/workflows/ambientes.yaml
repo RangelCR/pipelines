@@ -6,11 +6,16 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-
+    inputs:
+      ambiente:
+        type: choice
+        options:
+            - HML
+            - PRD
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: PRD
+    environment: ${{ inputs.ambiente }}
     steps: 
       - name: "First Action"
         run: echo "Deploy sendo executado às" $(date)
